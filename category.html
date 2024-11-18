@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category - BookNest</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .book-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .book-item h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .book-item p {
+            color: #666;
+        }
+        .book-item .price {
+            font-weight: bold;
+            color: #333;
+        }
+        .book-item button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .book-item button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Books in Category</h1>
+    </div>
+
+    <div class="book-container" id="book-container">
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" alt="The Great Gatsby">
+            <h3>The Great Gatsby</h3>
+            <p class="price">$10.99</p>
+            <button onclick="addToCart(1, 'The Great Gatsby', 10.99, 'https://covers.openlibrary.org/b/id/7222246-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/153123-L.jpg" alt="1984">
+            <h3>1984</h3>
+            <p class="price">$8.99</p>
+            <button onclick="addToCart(2, '1984', 8.99, 'https://covers.openlibrary.org/b/id/153123-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/8222071-L.jpg" alt="To Kill a Mockingbird">
+            <h3>To Kill a Mockingbird</h3>
+            <p class="price">$12.99</p>
+            <button onclick="addToCart(3, 'To Kill a Mockingbird', 12.99, 'https://covers.openlibrary.org/b/id/8222071-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/8250696-L.jpg" alt="Moby Dick">
+            <h3>Moby Dick</h3>
+            <p class="price">$11.49</p>
+            <button onclick="addToCart(4, 'Moby Dick', 11.49, 'https://covers.openlibrary.org/b/id/8250696-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/8231636-L.jpg" alt="Pride and Pre judice">
+            <h3>Pride and Prejudice</h3>
+            <p class="price">$9.99</p>
+            <button onclick="addToCart(5, 'Pride and Prejudice', 9.99, 'https://covers.openlibrary.org/b/id/8231636-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" alt="The Catcher in the Rye">
+            <h3>The Catcher in the Rye</h3>
+            <p class="price">$10.49</p>
+            <button onclick="addToCart(6, 'The Catcher in the Rye', 10.49, 'https://covers.openlibrary.org/b/id/7222246-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" alt="Brave New World">
+            <h3>Brave New World</h3>
+            <p class="price">$11.99</p>
+            <button onclick="addToCart(7, 'Brave New World', 11.99, 'https://covers.openlibrary.org/b/id/7222246-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" alt="Fahrenheit 451">
+            <h3>Fahrenheit 451</h3>
+            <p class="price">$9.49</p>
+            <button onclick="addToCart(8, 'Fahrenheit 451', 9.49, 'https://covers.openlibrary.org/b/id/7222246-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" alt="The Hobbit">
+            <h3>The Hobbit</h3>
+            <p class="price">$12.99</p>
+            <button onclick="addToCart(9, 'The Hobbit', 12.99, 'https://covers.openlibrary.org/b/id/7222246-L.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" alt="War and Peace">
+            <h3>War and Peace</h3>
+            <p class="price">$14.99</p>
+            <button onclick="addToCart(10, 'War and Peace', 14.99, 'https://covers.openlibrary.org/b/id/7222246-L.jpg')">Add to Cart</button>
+        </div>
+        <!-- Add more books as needed -->
+    </div>
+
+    <script>
+        function addToCart(id, name, price, image) {
+            console.log(`Added to cart: ${name}, Price: $${price}`);
+        }
+    </script>
+
+</body>
+</html>

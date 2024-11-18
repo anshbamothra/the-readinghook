@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .feedback-display {
+            margin-bottom: 20px;
+        }
+
+        .feedback-item {
+            background: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1976D2;
+        }
+
+        .submitted-feedback {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        
+        <div class="feedback-display">
+            <h2>Recent Feedback</h2>
+            <div class="feedback-item">
+                <p><strong>John Doe:</strong> Great book! Really enjoyed the plot twists.</p>
+            </div>
+            <div class="feedback-item">
+                <p><strong>Jane Smith:</strong> A fantastic read for all ages. Highly recommend!</p>
+            </div>
+        </div>
+
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <div id="submittedFeedback" class="submitted-feedback"></div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the values from the form
+            const name = document.getElementById('name').value;
+            const feedback = document.getElementById('feedback').value;
+
+            // Create a new feedback item
+            const feedbackItem = document.createElement('div');
+            feedbackItem.classList.add('feedback-item');
+            feedbackItem.innerHTML = `<p><strong>${name}:</strong> ${feedback}</p>`;
+
+            // Append the new feedback item to the submitted feedback section
+            document.getElementById('submittedFeedback').appendChild(feedbackItem);
+
+            // Clear the form fields
+            document.getElementById('feedbackForm').reset();
+        });
+    </script>
+</body>
+</html>

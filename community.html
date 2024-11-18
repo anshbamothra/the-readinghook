@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <title>Community</title>
+    <style>
+        /* Inline CSS for the Community page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .community-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .group-form {
+            margin-top: 20px;
+        }
+
+        .group-form input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #28a745; /* Green color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #218838; /* Darker green on hover */
+        }
+
+        .group-list {
+            margin-top: 20px;
+        }
+
+        .group-item {
+            background: #e9ecef;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<<body>
+
+    <div class="header">
+        <h1>Welcome to the Community</h1>
+    </div>
+
+    <div class="community-container">
+        <h1>Community Groups</h1>
+        <p>Join a group that interests you!</p>
+
+        <div class="group-form">
+            <input type="text" id="group-name" placeholder="Create a new group...">
+            <a href="#" class="btn" id="create-group">Create Group</a>
+        </div>
+
+        <div class="group-list">
+            <h2>Available Groups</h2>
+            <div class="group-item">
+                <strong>Book Lovers Club</strong>
+                <p>A community for those who love reading and sharing book recommendations.</p>
+                <a href="#" class="btn">Join Group</a>
+            </div>
+            <div class="group-item">
+                <strong>Nature Enthusiasts</strong>
+                <p>Join us for hikes, camping trips, and discussions about nature conservation.</p>
+                <a href="#" class="btn">Join Group</a>
+            </div>
+            <div class="group-item">
+                <strong>Tech Innovators</strong>
+                <p>A group for tech enthusiasts to share ideas, projects, and trends in technology.</p>
+                <a href="#" class="btn">Join Group</a>
+            </div>
+        </div>
+
+        <div class="group-display" id="group-display"></div>
+    </div>
+
+    <div class="footer">
+        <p>Footer Content Here</p>
+    </div>
+
+    <script>
+        // JavaScript for creating a new group
+        document.querySelector('#create-group').onclick = function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            const groupName = document.querySelector('#group-name').value.trim();
+            if (groupName) {
+                const groupDisplay = document.querySelector('#group-display');
+                const newGroup = document.createElement('div');
+                newGroup.classList.add('group-item');
+                newGroup.innerHTML = `<strong>${groupName}</strong><p>Welcome to the ${groupName}!</p><a href="#" class="btn">Join Group</a>`;
+                groupDisplay.appendChild(newGroup);
+                document.querySelector('#group-name').value = ''; // Clear the input field
+            } else {
+                alert('Please enter a group name.');
+            }
+        };
+    </script>
+
+</body>
+</html>

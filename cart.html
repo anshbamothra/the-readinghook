@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - BookNest</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS file -->
+    <style>
+        /* Add your custom styles here */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 75px;
+            margin-right: 10px;
+        }
+
+        .cart-item h3 {
+            flex: 1;
+            margin: 0;
+        }
+
+        .cart-item .price {
+            margin-right: 20px;
+        }
+
+        .quantity-input {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .update-btn, .remove-btn, .checkout-btn {
+            background: blue;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .remove-btn {
+            background: red;
+        }
+
+        .checkout-btn {
+            background: green;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Your Cart</h1>
+    </div>
+
+    <div class="cart-container" id="cart-container">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+
+    <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+
+    <script>
+        // Function to render cart items
+        function renderCart() {
+            const cartContainer = document.getElementById('cart-container');
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cartItems.length === 0) {
+                cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+                return;
+            }
+
+            cartContainer.innerHTML = ''; // Clear previous items
+
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}">
+                    <h3>${item.title}</h3>
+                    <p class="price">$${item.price.toFixed(2)} x <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, this.value)"></p>
+                    <button class="update-btn" onclick="updateQuantity(${item.id}, document.querySelector('.quantity-input[value="${item.quantity}"]').value)">Update</button>
+                    <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>`;
+                cartContainer.appendChild(cartItem);
+            });
+        }
+
+        // Function to update the quantity of an item
+        function updateQuantity(id, quantity) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cartItems.find(item => item.id === id);
+            if (item) {
+                item.quantity = parseInt(quantity);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                renderCart(); // Re-render the cart to reflect changes
+            }
+        }
+
+        // Function to remove an item from the cart
+        function removeItem(id) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const updatedItems = cartItems.filter(item => item.id !== id); // Filter out the item to be removed
+            localStorage.setItem('cart', JSON.stringify(updatedItems));
+            renderCart(); // Re-render the cart after removal
+        }
+
+        // Function to proceed to checkout
+        function proceedToCheckout() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cartItems.length === 0) {
+                alert("Your cart is empty. Please add items to the cart before proceeding to checkout.");
+                return;
+            }
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        }
+
+        // Call the function to render cart items on page load
+        window.onload = renderCart;
+    </script>
+</body>
+</html>

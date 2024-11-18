@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <title>Exchange Books</title>
+    <style>
+        /* Inline CSS for the Exchange page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+    
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+    
+        .exchange-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        h1 {
+            color: #333;
+        }
+    
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+    
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: #28a745; /* Green color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+    
+        .btn:hover {
+            background: #218838; /* Darker green on hover */
+        }
+    
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    
+        .book-selection {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Optional: distributes space evenly */
+        }
+    
+        .book-item {
+            margin: 10px; /* Adds space between book items */
+            flex: 1 0 30%; /* Adjusts the width of the items; you can change the percentage as needed */
+            box-sizing: border-box; /* Ensures padding and margin are included in the width */
+        }
+    </style>
+</head>
+    <body>
+
+        <div class="header">
+            <h1>Exchange Your Books</h1>
+        </div>
+    
+        <div class="exchange-container">
+            <h2>Welcome to Our Book Exchange Program!</h2>
+            <p>Select the books you would like to exchange:</p>
+    
+            <form id="exchange-form">
+                <div class="book-selection">
+                    <div class="book-item">
+                        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-1.png" alt="Book 1" width="200" height="250">
+                        <p>Book Title 1</p>
+                        <input type="checkbox" name="books" value="Book Title 1">
+                    </div>
+                    <div class="book-item">
+                        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-2.png" alt="Book 2" width="200" height="250">
+                        <p>Book Title 2</p>
+                        <input type="checkbox" name="books" value="Book Title 2">
+                    </div>
+                    <div class="book-item">
+                        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-3.png" alt="Book 3" width="200" height="250">
+                        <p>Book Title 3</p>
+                        <input type="checkbox" name="books" value="Book Title 3">
+                    </div>
+                    <div class="book-item">
+                        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-4.png" alt="Book 4"width="200" height="250">
+                        <p>Book Title 4</p>
+                        <input type="checkbox" name="books" value="Book Title 4">
+                    </div>
+                    <div class="book-item">
+                        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-5.png" alt="Book 5"width="200" height="250">
+                        <p>Book Title 5</p>
+                        <input type="checkbox" name="books" value="Book Title 5">
+                    </div>
+                    <div class="book-item">
+                        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-6.png" alt="Book 6"width="200" height="250">
+                        <p>Book Title 6</p>
+                        <input type="checkbox" name="books" value="Book Title 6">
+                    </div>
+                </div>
+                <button type="button" class="btn" id="submit-exchange">Submit Your Books</button>
+            </form>
+        </div>
+    
+        <div class="footer">
+            <p>&copy; 2022 BookNest. All rights reserved.</p>
+        </div>
+    
+        <script>
+            // JavaScript for handling the button click
+            document.querySelector('#submit-exchange').onclick = () => {
+                const selectedBooks = Array.from(document.querySelectorAll('input[name="books"]:checked')).map(checkbox => checkbox.value);
+                if (selectedBooks.length > 0) {
+                    alert('Thank you for your submission! You have selected: ' + selectedBooks.join(', ') + '. Our team will contact you shortly.');
+                } else {
+                    alert('Please select at least one book to exchange.');
+                }
+            }
+        </script>
+    
+    </body>
+</html>
